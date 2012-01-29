@@ -5,15 +5,30 @@ import (
     "appengine/urlfetch"
     "fmt"
     "http"
+    "template"
 )
 
 func init() {
     http.HandleFunc("/", index)
     http.HandleFunc("/url", getURL)
+    http.HandleFunc("/template", srvTemplate)
+}
+
+type Page struct {
+    Title   string
+    Body    []byte
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, startPage)
+}
+
+func srvTemplate(w http.ResponseWriter, r *http.Request) {
+    title := "Widgetproxy"
+    filename := "templates/index.html"
+    p := &Page{Title: title}
+    t, _ := template.ParseFile(filename)
+    t.Execute(w, p)
 }
 
 func getURL(w http.ResponseWriter, r *http.Request) {
