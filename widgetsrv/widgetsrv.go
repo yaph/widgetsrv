@@ -4,8 +4,8 @@ import (
     "appengine"
     "appengine/urlfetch"
     "fmt"
-    "http"
-    "template"
+    "net/http"
+    "text/template"
 )
 
 func init() {
@@ -27,7 +27,7 @@ func srvTemplate(w http.ResponseWriter, r *http.Request) {
     title := "Widgetproxy"
     filename := "templates/index.html"
     p := &Page{Title: title}
-    t, _ := template.ParseFile(filename)
+    t, _ := template.ParseFiles(filename)
     t.Execute(w, p)
 }
 
@@ -36,7 +36,7 @@ func getURL(w http.ResponseWriter, r *http.Request) {
     client := urlfetch.Client(c)
     resp, err := client.Get("http://www.torlaune.de/")
     if err != nil {
-        http.Error(w, err.String(), http.StatusInternalServerError)
+        http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
 
