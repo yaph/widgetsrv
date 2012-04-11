@@ -1,0 +1,10 @@
+body{margin:0;padding:0;}
+#zxwidget {width:188px;height:288px;border:1px solid #fafafa;padding:5px;font:11.4px Arial;}
+#zxlist {list-style:none;margin:0;padding:0;}
+#zxlist img {width:65px;height:65px;float:left;margin:0 5px 0 0;}
+#zxlist li {clear:both;height:75px;overflow:hidden;}
+#zxsearch {margin:0 0 10px 0;}
+#searchtext {width:120px;}
+#prev,#next{cursor:pointer;}
+input {font:12px Arial;}
+.center {text-align:center;}
