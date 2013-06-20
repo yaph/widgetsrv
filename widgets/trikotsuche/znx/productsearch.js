@@ -20,8 +20,10 @@ function productSearch(page) {
     url += '&q=' + s;
     url += '&page=' + page;
     url += '&t='+new Date().getMinutes();
-    var csrc = $("#zxsrc");
-    csrc.html('<script src="'+url+'"></script>');
+
+    var zx = document.createElement('script'); zx.type = 'text/javascript'; zx.src = url;
+    document.getElementById('zxsrc').appendChild(zx);
+
     var tss = $('#tssearch');
     tss.attr('href', 'http://trikotsuche.de/s/' + encodeURIComponent(s));
     tss.html(s);
@@ -44,8 +46,7 @@ function renderItem(item, container) {
     var program = item.program.$;
     var price = item.price;
     var currency = item.currency;
-    var imgsmall = item.image.small;
-
+    var img = item.image.large;
     if (name.length > 50) {
         name = name.substring(0,50);
         lastws = name.lastIndexOf(' ');
@@ -53,7 +54,7 @@ function renderItem(item, container) {
     }
 
     var li = document.createElement('li');
-    var content = '<img src="' + imgsmall + '">';
+    var content = '<img src="' + img + '">';
     content += '<a href="' + link + '">' + name + '</a>';
     content += '<br>Preis: ' + price + currency;
     content += '<br>bei: ' + program;
