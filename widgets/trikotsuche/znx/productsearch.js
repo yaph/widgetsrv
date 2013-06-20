@@ -11,10 +11,11 @@ $(function(){
 6906    Adidas DE
 9435    Puma DE
 307     Karstadt DE
-660     Default
+
+660     Default <- leads to a 404 error, don't use it!
 */
 function productSearch(page) {
-    var url = 'http://api.zanox.com/json/2011-03-01/products?connectId=A6715064998BE907ED32&adspace=994828&region=DE&programs=660&category=0&minPrice=0&maxPrice=1000&hasImages=true&items=3&callback=searchHandler';
+    var url = 'http://api.zanox.com/json/2011-03-01/products?connectId=A6715064998BE907ED32&adspace=994828&region=DE&programs=1739,6985,6906,9435,307&category=0&minPrice=0&maxPrice=1000&hasImages=true&items=3&callback=searchHandler';
     var s = $('#searchtext').val();
     url += '&q=' + s;
     url += '&page=' + page;
